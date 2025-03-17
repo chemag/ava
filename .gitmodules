@@ -1,0 +1,3 @@
+[submodule "lib/encapp"]
+	path = lib/encapp
+	url = https://github.com/JohanBlome/encapp
