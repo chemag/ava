@@ -1,3 +1,6 @@
 [submodule "lib/encapp"]
 	path = lib/encapp
 	url = https://github.com/JohanBlome/encapp
+[submodule "lib/libde265"]
+	path = lib/libde265
+	url = https://github.com/chemag/libde265
