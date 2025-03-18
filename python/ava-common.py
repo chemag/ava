@@ -3,6 +3,22 @@
 import re
 import subprocess
 import sys
+import tempfile
+
+
+def get_device_workdir():
+    return "/sdcard"
+
+
+def get_local_workdir(local_workdir):
+    if local_workdir is None:
+        # choose a random dir
+        tempdir = tempfile.gettempdir()
+        local_workdir = tempfile.mkdtemp(prefix="ava.tmp.", dir=tempdir)
+    # prepare the local working directory to pull the files in
+    if not os.path.exists(local_workdir):
+        os.mkdir(local_workdir)
+    return local_workdir
 
 
 def run(command, **kwargs):
