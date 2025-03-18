@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import re
 import subprocess
 import sys
@@ -19,6 +20,16 @@ def get_local_workdir(local_workdir):
     if not os.path.exists(local_workdir):
         os.mkdir(local_workdir)
     return local_workdir
+
+
+def get_android_serial(android_serial):
+    if android_serial is not None:
+        return android_serial
+    elif "ANDROID_SERIAL" in os.environ:
+        # read serial number from ANDROID_SERIAL env variable
+        return os.environ["ANDROID_SERIAL"]
+    else:
+        return None
 
 
 def run(command, **kwargs):
