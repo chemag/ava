@@ -13,6 +13,7 @@ lib_path = os.path.join(os.path.dirname(__file__), "..", "lib", "encapp", "scrip
 sys.path.insert(0, lib_path)
 
 import encapp
+import encapp_tool
 
 
 def list_codecs(ava_config):
@@ -22,7 +23,7 @@ def list_codecs(ava_config):
 
     try:
         # 0. ensure encapp is installed
-        # XXX
+        encapp_tool.app_utils.install_app(ava_config.android_serial, ava_config.debug)
 
         # 1. run encapp command
         model = "model"
