@@ -1,0 +1,4 @@
+# cmake stuff
+build/
+
+*/*.o
