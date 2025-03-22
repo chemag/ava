@@ -27,6 +27,7 @@ default_values = {
     "debug": 0,
     "dry_run": False,
     "android_serial": None,
+    "encoder": None,
     "test": None,
     "test_list": False,
     "infile_list": None,
@@ -39,6 +40,7 @@ class AvaConfig:
         self.debug = options.debug
         self.dry_run = options.dry_run
         self.android_serial = ava_common.get_android_serial(options.android_serial)
+        self.encoder = options.encoder
         self.test = options.test
         self.infile_list = options.infile_list
         self.outfile = options.outfile
@@ -105,6 +107,14 @@ def get_options(argv):
         dest="android_serial",
         default=default_values["android_serial"],
         help="Device serial number (overrides $ANDROID_SERIAL)",
+    )
+    parser.add_argument(
+        "--encoder",
+        action="store",
+        type=str,
+        dest="encoder",
+        default=default_values["encoder"],
+        help="Encoder Name",
     )
     parser.add_argument(
         "--test",
