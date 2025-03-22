@@ -16,14 +16,23 @@ import encapp
 import encapp_tool
 
 
+def encapp_is_installed(android_serial, debug):
+    # check whether it is already installed
+    already_installed = encapp_tool.app_utils.install_ok(android_serial, debug)
+    if already_install:
+        return
+    encapp_tool.app_utils.install_app(android_serial, debug)
+
+
 def list_codecs(ava_config):
     output_dict = {
         "testname": "list_codecs",
     }
 
     try:
-        # 0. ensure encapp is installed
-        encapp_tool.app_utils.install_app(ava_config.android_serial, ava_config.debug)
+        # 0. preparation
+        # 0.1. ensure encapp is installed
+        encapp_is_installed(ava_config.android_serial, ava_config.debug)
 
         # 1. run encapp command
         model = "model"
@@ -48,8 +57,9 @@ def list_codecs(ava_config):
 def qp_bounds(ava_config):
 
     try:
-        # 0. ensure encapp is installed
-        encapp_tool.app_utils.install_app(ava_config.android_serial, ava_config.debug)
+        # 0. preparation
+        # 0.1. ensure encapp is installed
+        encapp_is_installed(ava_config.android_serial, ava_config.debug)
 
         # 1. run encapp command
         model = "model"
