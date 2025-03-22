@@ -35,6 +35,9 @@ default_values = {
 }
 
 
+TEST_INPUT_MP4 = "vid/johnny.1280x720.60fps.264.mp4"
+
+
 class AvaConfig:
     def __init__(self, options):
         self.debug = options.debug
@@ -43,6 +46,10 @@ class AvaConfig:
         self.encoder = options.encoder
         self.test = options.test
         self.infile_list = options.infile_list
+        if self.infile_list is None:
+            self.infile_list = [
+                TEST_INPUT_MP4,
+            ]
         self.outfile = options.outfile
 
     def __repr__(self):
