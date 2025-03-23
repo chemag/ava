@@ -20,7 +20,7 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/lib/libde265)
 
 
 # 2. build libava library
-add_library(ava libava.cc)
+add_library(ava src/libava.cc)
 
 target_link_libraries(ava
   libde265
