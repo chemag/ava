@@ -186,6 +186,9 @@ def main(argv):
         ), f"error: unknown test {options.test}"
         # run a specific test
         results_dict = ava_tests.AVA_TESTS[options.test](ava_config)
+        if results_dict["retcode"] == -1:
+            print(results_dict["backtrace"])
+            sys.exit(-1)
         # write results in outfile
         results_json = json.dumps(results_dict, indent=4)
         with open(options.outfile, "w") as fd:
