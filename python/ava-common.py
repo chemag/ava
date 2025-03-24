@@ -181,3 +181,14 @@ def gnu_time_parse(gnu_time_str, logfd, debug):
         gnu_time_stats["usertime"] + gnu_time_stats["systemtime"]
     )
     return gnu_time_stats
+
+
+def encapp_get_encoder_name(output_dict, mime_type):
+    filtered_canonical_names = [
+        encoder["canonical_name"]
+        for encoder in output_dict["results"]["encoders"]
+        if encoder.get("is_encoder", True)
+        and encoder.get("is_hardware_accelerated", True)
+        and encoder.get("media_type", {}).get("mime_type") == mime_type
+    ]
+    return filtered_canonical_names
