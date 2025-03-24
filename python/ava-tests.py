@@ -189,9 +189,7 @@ def qp_bounds(ava_config):
         assert returncode == 0, f"error: {out = } {err = }"
 
         # 2.2. obtain QP_Y values
-        qpextract_cmd = os.path.join(root_path, "lib", "libde265", "tools", "qpextract")
-        # TODO(chema): fix qpextract path
-        qpextract_cmd = f"{os.environ['HOME']}/proj/libde265/tools/qpextract"
+        qpextract_cmd = os.path.join(root_path, "build", "lib", "libde265", "qpextract")
         qpy_file = tempfile.NamedTemporaryFile(
             prefix=f"ava.{os.path.basename(encapp_files['mp4'])}.", suffix=".qpy.csv"
         ).name
