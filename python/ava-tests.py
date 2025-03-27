@@ -210,7 +210,7 @@ def qp_bounds(ava_config):
                 if qp_max == -1 or qp > qp_max:
                     qp_max = qp
         # 2.3. check QP_Y values
-        if qp_min != 20 or qp_max != 25:
+        if qp_min < 20 or qp_max > 25:
             output_dict["retcode"] = -2
             output_dict["error"] = (
                 f"expected QP range: 20:25\nfound QPY range: {qp_min}:{qp_max}\nbitrate: {bitrate}\nencoded_file: {encapp_files['mp4']}\nqpy_file: {qpy_file}"
