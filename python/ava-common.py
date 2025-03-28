@@ -80,7 +80,7 @@ def run(command, **kwargs):
         err = err[0 : err.index(GNU_TIME_BYTES) :]
         return returncode, out, err, gnu_time_stats
     # return results
-    return returncode, out, err
+    return returncode, out, err, None
 
 
 GNU_TIME_DEFAULT_KEY_DICT = {
