@@ -187,7 +187,7 @@ def qp_bounds(ava_config):
                 test = encapp.tests_definitions.Test()
                 test.common.id = f"qp_{qpmin}-{qpmax}_{bitrate}"
                 test.common.description = f"Check that boundaries for qp values are within {qpmin} and {qpmax}"
-                test.common.output_filename = f"qp.bound.{qpmin}-{qpmax}.{bitrate}"
+                test.common.output_filename = f"qp.bound.{test.input.filepath}.qp{qpmin}-{qpmax}.{bitrate}bps"
                 test.input.pix_fmt = encapp.tests_definitions.PixFmt.nv12
                 test.configure.bitrate = bitrate
                 test.configure.codec = ava_config.encoder
