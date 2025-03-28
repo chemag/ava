@@ -191,11 +191,13 @@ def main(argv):
         results_dict = ava_tests.AVA_TESTS[options.test](ava_config)
         if results_dict["retcode"] == -1:
             print(results_dict["backtrace"])
-            all_results = results_dict["results"]
-            for result in all_results:
-                if result["retcode"] != 0:
-                    print(result)
-
+            if results_dict["results"] is not None:
+                all_results = results_dict["results"]
+                for result in all_results:
+                    if result["retcode"] != 0:
+                        print(result)
+            else:
+                print(results_dict)
 
             sys.exit(-1)
         # write results in outfile
