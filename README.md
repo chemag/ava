@@ -17,4 +17,16 @@ Some ava goals:
 * (3) reliability: Ava should not crash without a clear message that can be reported easily.
 
 
+Source
+The project needs submodules to build. Either clone recursively with:
 
+`$git clone  --recurse-submodules https://github.com/chemag/ava.git`
+ or run:
+`$git submodule update --init --recursive`
+
+
+Building
+`$cd ava; mkdir build; cmake build;make`
+
+Run
+python3 ava.py --test qp_bounds --encoder c2.qti.hevc.encoder -s SERIAL
