@@ -124,7 +124,11 @@ def qp_bounds(ava_config):
         encapp_is_installed(ava_config.android_serial, ava_config.debug)
 
         # 0.2. get a (single) valid media file
-        infile = ava_config.infile_list[0]
+        infile = ava_config.infile_list
+        if isinstance(infile, list):
+            # TODO: shoudl we do file iteration as well?
+            infile = infile[0]
+
         """
         if os.path.splitext(infile)[1] in ENCODED_VIDEO_EXTENSIONS:
             infile_encoded = infile
