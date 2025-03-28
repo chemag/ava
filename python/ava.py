@@ -5,7 +5,6 @@
 This is a tool to run ava tests.
 """
 
-
 import argparse
 import importlib
 import itertools
@@ -13,13 +12,17 @@ import json
 import os
 import sys
 import tempfile
+from pathlib import Path
 
 ava_common = importlib.import_module("ava-common")
 ava_tests = importlib.import_module("ava-tests")
 ava_version = importlib.import_module("ava-version")
 
+SCRIPT_DIR = Path(globals().get("__file__", "./_")).absolute().parent
 # allow importing from subprojects
-lib_path = os.path.join(os.path.dirname(__file__), "..", "lib", "encapp", "scripts")
+lib_path = os.path.join(
+    os.path.dirname(__file__), SCRIPT_DIR, "..", "lib", "encapp", "scripts"
+)
 sys.path.insert(0, lib_path)
 
 
@@ -35,7 +38,7 @@ default_values = {
 }
 
 
-TEST_INPUT_MP4 = "vid/johnny.1280x720.60fps.264.mp4"
+TEST_INPUT_MP4 = f"{SCRIPT_DIR}/../vid/johnny.1280x720.60fps.264.mp4"
 
 
 class AvaConfig:
