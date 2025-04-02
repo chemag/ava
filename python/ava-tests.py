@@ -191,6 +191,7 @@ def qp_bounds(ava_config):
                 test.common.output_filename = f"qp.bound.{videoname}.qp{qpmin}-{qpmax}.{bitrate}bps"
                 test.input.pix_fmt = encapp.tests_definitions.PixFmt.nv12
                 test.configure.bitrate = bitrate
+                test.configure.bitrate_mode = encapp.tests_definitions.Configure.BitrateMode.vbr
                 test.configure.codec = ava_config.encoder
 
                 test.input.framerate = int(round(float(videoinfo["framerate"]), 0))
